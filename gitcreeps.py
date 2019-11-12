@@ -1,6 +1,9 @@
 import json
 
 import maya
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 days = {
@@ -26,6 +29,15 @@ def day(t):
         return days[weekday]
     except KeyError:
         return None
+
+def day_i(t):
+
+    # where t means unformatted time
+    maya_datetime = maya.parse(t).datetime()
+    weekday = maya_datetime.weekday()
+
+    return weekday
+
 
 def hour(t):
 
@@ -70,7 +82,7 @@ def to_json_file(data, filename):
 
 def parse_log(file_name):
     '''
-    using command: git shortlog --format=format:%cI
+    using command: git shortlog --format=format:%cI > log.txt
     produces data in the format:
 
     {
@@ -155,3 +167,36 @@ def merge_names(clean_data, namelist, default=None):
 
     clean_data[default_name] = data
 
+def plot_user(data, name):
+    ax = plt.gca()
+
+    # for key in clean_data:
+    USER = name
+    mydata = data[USER]
+    arj_day = []
+    arj_time = []
+    arj_date = []
+    arj_hour = []
+
+    for d in mydata:
+        times = mydata[d]['times']
+        for t in times:
+            arj_day.append(day_i(t))
+            arj_hour.append(int(hour(t)))
+            arj_date.append(date(t))
+
+    #print(arj_date, arj_days, arj_time)
+    df = pd.DataFrame({
+        'day':arj_day,
+        'hour':arj_hour,
+        'date':arj_date
+    })
+    print(df)
+
+
+    plt.scatter(df['day'], df['hour'], alpha=0.2, s=100)
+    plt.title(USER)
+    plt.xticks(np.arange(7), [days[d] for d in days])
+    plt.xlabel("Days")
+    plt.ylabel("Hours/24");
+    plt.show()
