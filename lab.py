@@ -1,13 +1,12 @@
-import maya
-
-x = maya.parse('2019-11-10T11:04:35+04:00').datetime()
-print(dir(x))
-print(x.time())
-
-def buzz(x):
-	del x[1]
-
-x = {1:2, 2:3}
-buzz(x)
-
-print(x)
+from gitcreeps import *
+names = top_committers('data/cpython_log.txt', 30, return_names=True)
+w = open('names.txt', 'w+')
+for name in names:
+    w.write(
+'''
+{0}
+![{0}](pics/{1}.png)
+'''.format(name, name.replace(' ', '_'))
+    )
+w.flush()
+w.close()

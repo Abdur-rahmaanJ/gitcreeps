@@ -1,0 +1,31 @@
+Top 30 committers for data/cpython_log.txt:
+      11192: Guido van Rossum
+       5919: Victor Stinner
+       5829: Benjamin Peterson
+       5677: Georg Brandl
+       5465: Fred Drake
+       4151: Raymond Hettinger
+       3972: Serhiy Storchaka
+       3765: Antoine Pitrou
+       2978: Jack Jansen
+       2765: Martin v. Löwis
+       2517: Tim Peters
+       2105: Brett Cannon
+       2087: Barry Warsaw
+       2032: Andrew M. Kuchling
+       1999: Ezio Melotti
+       1922: Mark Dickinson
+       1815: Neal Norwitz
+       1361: Christian Heimes
+       1341: R David Murray
+       1237: Senthil Kumaran
+       1200: Gregory P. Smith
+       1196: Terry Jan Reedy
+       1144: Vinay Sajip
+       1071: Éric Araujo
+       1022: Jeremy Hylton
+        984: Yury Selivanov
+        956: Berker Peksag
+        912: Ned Deily
+        852: Greg Ward
+        790: Tarek Ziadé
