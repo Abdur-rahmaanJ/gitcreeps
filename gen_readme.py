@@ -1,4 +1,9 @@
+from gitcreeps import *
 
+w = open('README.md', 'w+')
+
+w.write(
+'''
 # gitcreeps
 
 The library for sneaking on committers! 
@@ -22,67 +27,20 @@ The most probable time you'll see Brett Cannon at his PC is on a Friday at 4pm.
 Psst. those are just assumptions!
 
 Here are the patterns for the top 30 committers of cpython:
+'''
+    )
 
-![Guido van Rossum](pics/Guido_van_Rossum.png)
+# pics
+names = top_committers('data/cpython_log.txt', 30, return_names=True)
+for name in names:
+    w.write(
+'''
+![{0}](pics/{1}.png)
+'''.format(name, name.replace(' ', '_'))
+    )
 
-![Victor Stinner](pics/Victor_Stinner.png)
-
-![Benjamin Peterson](pics/Benjamin_Peterson.png)
-
-![Georg Brandl](pics/Georg_Brandl.png)
-
-![Fred Drake](pics/Fred_Drake.png)
-
-![Raymond Hettinger](pics/Raymond_Hettinger.png)
-
-![Serhiy Storchaka](pics/Serhiy_Storchaka.png)
-
-![Antoine Pitrou](pics/Antoine_Pitrou.png)
-
-![Jack Jansen](pics/Jack_Jansen.png)
-
-![Martin v. Löwis](pics/Martin_v._Löwis.png)
-
-![Tim Peters](pics/Tim_Peters.png)
-
-![Brett Cannon](pics/Brett_Cannon.png)
-
-![Barry Warsaw](pics/Barry_Warsaw.png)
-
-![Andrew M. Kuchling](pics/Andrew_M._Kuchling.png)
-
-![Ezio Melotti](pics/Ezio_Melotti.png)
-
-![Mark Dickinson](pics/Mark_Dickinson.png)
-
-![Neal Norwitz](pics/Neal_Norwitz.png)
-
-![Christian Heimes](pics/Christian_Heimes.png)
-
-![R David Murray](pics/R_David_Murray.png)
-
-![Senthil Kumaran](pics/Senthil_Kumaran.png)
-
-![Gregory P. Smith](pics/Gregory_P._Smith.png)
-
-![Terry Jan Reedy](pics/Terry_Jan_Reedy.png)
-
-![Vinay Sajip](pics/Vinay_Sajip.png)
-
-![Éric Araujo](pics/Éric_Araujo.png)
-
-![Jeremy Hylton](pics/Jeremy_Hylton.png)
-
-![Yury Selivanov](pics/Yury_Selivanov.png)
-
-![Berker Peksag](pics/Berker_Peksag.png)
-
-![Ned Deily](pics/Ned_Deily.png)
-
-![Greg Ward](pics/Greg_Ward.png)
-
-![Tarek Ziadé](pics/Tarek_Ziadé.png)
-
+w.write(
+'''
 # Docs
 
 ### def to_json_file(data, filename):
@@ -159,7 +117,7 @@ Top 20 committers for data/cpython_log.txt:
        3972: Serhiy Storchaka
        3765: Antoine Pitrou
        2978: Jack Jansen
-       2765: Martin v. Löwis
+       2765: Martin v. LÃ¶wis
        2517: Tim Peters
        2105: Brett Cannon
        2087: Barry Warsaw
@@ -175,3 +133,8 @@ Top 20 committers for data/cpython_log.txt:
 return_ returns the whole data [[name1, commits], [name2, commits]]
 
 return_names returns [[name1, name2, name3]]
+'''
+    )
+
+w.flush()
+w.close()
